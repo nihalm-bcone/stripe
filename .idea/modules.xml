@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Stripe.iml" filepath="$PROJECT_DIR$/.idea/Stripe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/functional-programming/functional-programming.iml" filepath="$PROJECT_DIR$/functional-programming/functional-programming.iml" />
       <module fileurl="file://$PROJECT_DIR$/java-collections-framework/java-collections-framework.iml" filepath="$PROJECT_DIR$/java-collections-framework/java-collections-framework.iml" />
     </modules>
   </component>
