@@ -1,0 +1,121 @@
+-- -------------------------------------------------
+-- 1. departments
+-- -------------------------------------------------
+CREATE TABLE departments (
+    dept_id      INT PRIMARY KEY AUTO_INCREMENT,
+    dept_name    VARCHAR(100) UNIQUE NOT NULL,
+    location     VARCHAR(100)
+);
+
+INSERT INTO departments (dept_name, location) VALUES
+('Engineering',         'Pune'),
+('Human Resources',     'Mumbai'),
+('Finance',             'Delhi'),
+('Marketing',           'Bengaluru'),
+('Sales',               'Hyderabad'),
+('Customer Support',    'Chennai'),
+('IT & Infrastructure', 'Pune'),
+('R&D',                 'Bengaluru'),
+('Legal',               'Delhi'),
+('Administration',      'Mumbai');
+
+-- -------------------------------------------------
+-- 2. job_titles
+-- -------------------------------------------------
+CREATE TABLE job_titles (
+    title_id     INT PRIMARY KEY AUTO_INCREMENT,
+    title_name   VARCHAR(100) UNIQUE NOT NULL,
+    min_salary   DECIMAL(10,2),
+    max_salary   DECIMAL(10,2)
+);
+
+INSERT INTO job_titles (title_name, min_salary, max_salary) VALUES
+('Junior Developer',     300000.00, 600000.00),
+('Senior Developer',     700000.00, 1200000.00),
+('HR Executive',         350000.00, 700000.00),
+('HR Manager',           800000.00, 1500000.00),
+('Accountant',           400000.00, 800000.00),
+('Finance Manager',      900000.00, 1600000.00),
+('Marketing Executive',  350000.00, 750000.00),
+('Sales Manager',        800000.00, 1400000.00),
+('System Administrator', 500000.00, 900000.00),
+('Research Scientist',   600000.00, 1200000.00);
+
+-- -------------------------------------------------
+-- 3. employees
+-- -------------------------------------------------
+CREATE TABLE employees (
+    emp_id       INT PRIMARY KEY AUTO_INCREMENT,
+    first_name   VARCHAR(50),
+    last_name    VARCHAR(50),
+    email        VARCHAR(120) UNIQUE,
+    phone        VARCHAR(20),
+    hire_date    DATE,
+    dept_id      INT,
+    title_id     INT,
+    manager_id   INT,
+    CONSTRAINT fk_emp_dept  FOREIGN KEY (dept_id)  REFERENCES departments(dept_id),
+    CONSTRAINT fk_emp_title FOREIGN KEY (title_id) REFERENCES job_titles(title_id),
+    CONSTRAINT fk_emp_mgr   FOREIGN KEY (manager_id) REFERENCES employees(emp_id)
+);
+
+INSERT INTO employees
+(first_name, last_name, email, phone, hire_date, dept_id, title_id, manager_id) VALUES
+('Aarav',  'Sharma',   'aarav.sharma@example.com',   '9876543210', '2022-04-12', 1, 1, NULL),  -- first employee, no manager yet
+('Diya',   'Patel',    'diya.patel@example.com',     '9876543211', '2022-06-15', 1, 2, 1),
+('Rohan',  'Mishra',   'rohan.mishra@example.com',   '9876543212', '2023-01-10', 2, 3, NULL),
+('Neha',   'Verma',    'neha.verma@example.com',     '9876543213', '2021-11-05', 2, 4, 3),
+('Karan',  'Kapoor',   'karan.kapoor@example.com',   '9876543214', '2020-09-20', 3, 5, NULL),
+('Sana',   'Iqbal',    'sana.iqbal@example.com',     '9876543215', '2019-07-19', 3, 6, 5),
+('Vikram', 'Desai',    'vikram.desai@example.com',   '9876543216', '2022-03-28', 4, 7, NULL),
+('Meera',  'Joshi',    'meera.joshi@example.com',    '9876543217', '2020-02-17', 5, 8, NULL),
+('Arjun',  'Singh',    'arjun.singh@example.com',    '9876543218', '2024-01-03', 7, 9, NULL),
+('Priya',  'Menon',    'priya.menon@example.com',    '9876543219', '2021-05-22', 8,10, NULL);
+
+-- -------------------------------------------------
+-- 4. salaries  (one active row per employee)
+-- -------------------------------------------------
+CREATE TABLE salaries (
+    salary_id    INT PRIMARY KEY AUTO_INCREMENT,
+    emp_id       INT NOT NULL,
+    base_salary  DECIMAL(10,2) NOT NULL,
+    bonus        DECIMAL(10,2) DEFAULT 0,
+    effective_from DATE NOT NULL,
+    CONSTRAINT fk_sal_emp FOREIGN KEY (emp_id) REFERENCES employees(emp_id)
+);
+
+INSERT INTO salaries (emp_id, base_salary, bonus, effective_from) VALUES
+(1, 450000.00,  50000.00, '2024-04-01'),
+(2, 850000.00, 100000.00, '2024-04-01'),
+(3, 500000.00,  40000.00, '2024-04-01'),
+(4,1200000.00, 150000.00, '2024-04-01'),
+(5, 550000.00,  30000.00, '2024-04-01'),
+(6,1450000.00, 180000.00, '2024-04-01'),
+(7, 475000.00,  25000.00, '2024-04-01'),
+(8,1100000.00, 130000.00, '2024-04-01'),
+(9, 650000.00,  50000.00, '2024-04-01'),
+(10,950000.00, 120000.00, '2024-04-01');
+
+-- -------------------------------------------------
+-- 5. attendance  (simple daily clock‑in/clock‑out)
+-- -------------------------------------------------
+CREATE TABLE attendance (
+    att_id      INT PRIMARY KEY AUTO_INCREMENT,
+    emp_id      INT NOT NULL,
+    work_date   DATE NOT NULL,
+    clock_in    TIME,
+    clock_out   TIME,
+    CONSTRAINT fk_att_emp FOREIGN KEY (emp_id) REFERENCES employees(emp_id)
+);
+
+INSERT INTO attendance (emp_id, work_date, clock_in, clock_out) VALUES
+(1, '2025-07-08', '09:02', '18:04'),
+(2, '2025-07-08', '09:15', '18:10'),
+(3, '2025-07-08', '08:55', '17:58'),
+(4, '2025-07-08', '09:30', '19:02'),
+(5, '2025-07-08', '09:05', '18:05'),
+(6, '2025-07-08', '10:00', '19:45'),
+(7, '2025-07-08', '09:12', '18:00'),
+(8, '2025-07-08', '08:48', '17:30'),
+(9, '2025-07-08', '09:20', '18:15'),
+(10,'2025-07-08', '09:00', '18:00');

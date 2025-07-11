@@ -1,0 +1,10 @@
+delimiter $$
+create procedure OutParamDemo(in empId int, out eId int, out fname varchar(50))
+begin
+select emp_id, first_name into eId, fname from employees where emp_id = empId;
+end$$
+delimiter ;
+
+call OutParamDemo(2, @empId, @deptId);
+
+select @empId, @deptId;

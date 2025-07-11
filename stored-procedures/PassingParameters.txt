@@ -1,0 +1,9 @@
+delimiter $$
+create procedure ShowEmployees(in deptId int)
+begin
+select * from employees where dept_id < deptId;
+end$$
+
+delimiter ;
+
+call ShowEmployees(6);

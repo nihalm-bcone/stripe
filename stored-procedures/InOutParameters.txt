@@ -1,0 +1,12 @@
+delimiter $$
+create procedure inoutdemo(inout id int)
+begin
+select id;
+select count(*) into id from employees;
+end$$
+
+set @value = 123;
+
+call inoutdemo(@value);
+
+select @value;

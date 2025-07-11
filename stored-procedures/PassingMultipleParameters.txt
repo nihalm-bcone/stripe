@@ -1,0 +1,9 @@
+delimiter $$
+create procedure fetchEmp(in deptId int, in empId int)
+begin
+select * from employees where dept_id < deptId and emp_id < empId;
+end$$
+
+delimiter ;
+
+call fetchEmp(8, 5);

@@ -1,0 +1,8 @@
+delimiter $$
+
+create procedure HelloWorld()
+begin
+select "Hello World";
+end$$
+
+call HelloWorld();
