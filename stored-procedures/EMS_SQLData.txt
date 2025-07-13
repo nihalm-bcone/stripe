@@ -119,3 +119,22 @@ INSERT INTO attendance (emp_id, work_date, clock_in, clock_out) VALUES
 (8, '2025-07-08', '08:48', '17:30'),
 (9, '2025-07-08', '09:20', '18:15'),
 (10,'2025-07-08', '09:00', '18:00');
+
+CREATE TABLE accounts (
+    account_no   BIGINT UNSIGNED PRIMARY KEY,
+    name         VARCHAR(100) NOT NULL,
+    balance      DECIMAL(12,2) NOT NULL DEFAULT 0
+);
+
+-- Ten dummy records
+INSERT INTO accounts (account_no, name, balance) VALUES
+(410032156789, 'Aarav Sharma',        58230.75),
+(410032156790, 'Diya Patel',          41500.00),
+(410032156791, 'Rohan Mishra',        9875.50),
+(410032156792, 'Neha Verma',          127650.20),
+(410032156793, 'Karan Kapoor',        30540.00),
+(410032156794, 'Sana Iqbal',          220.15),
+(410032156795, 'Vikram Desai',        75200.00),
+(410032156796, 'Meera Joshi',         16690.80),
+(410032156797, 'Arjun Singh',         50400.00),
+(410032156798, 'Priya Menon',         930.60);
