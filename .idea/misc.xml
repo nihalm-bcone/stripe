@@ -7,6 +7,8 @@
         <option value="$PROJECT_DIR$/junit/pom.xml" />
         <option value="$PROJECT_DIR$/Department-microservices/pom.xml" />
         <option value="$PROJECT_DIR$/Employee-microservices/pom.xml" />
+        <option value="$PROJECT_DIR$/banking-app/pom.xml" />
+        <option value="$PROJECT_DIR$/java-multithreading/pom.xml" />
       </list>
     </option>
   </component>

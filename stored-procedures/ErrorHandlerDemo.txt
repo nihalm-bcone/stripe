@@ -1,0 +1,19 @@
+delimiter $$
+create procedure errorDemo(in amount int, in acNo bigint)
+begin
+declare exit handler for sqlexception
+begin
+show errors;
+end;
+if(amount < (select balance from xxxaccounts where account_no = acNo)) then
+	select "Money Withdrwan";
+else
+	select "Insufficient Balance";
+end if;
+end$$
+
+delimiter ;
+
+drop procedure ifDemo;
+
+call ifDemo(60000,410032156789);

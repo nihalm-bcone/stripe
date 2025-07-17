@@ -1,0 +1,15 @@
+delimiter $$
+create procedure ifDemo(in amount int, in acNo bigint)
+begin
+if(amount < (select balance from accounts where account_no = acNo)) then
+	select "Money Withdrwan";
+else
+	select "Insufficient Balance";
+end if;
+end$$
+
+delimiter ;
+
+drop procedure ifDemo;
+
+call ifDemo(60000,410032156789);

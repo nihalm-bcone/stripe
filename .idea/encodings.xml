@@ -3,6 +3,9 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Department-microservices/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Employee-microservices/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/banking-app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java-multithreading/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/java-multithreading/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/junit/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/junit/src/main/resources" charset="UTF-8" />
   </component>
