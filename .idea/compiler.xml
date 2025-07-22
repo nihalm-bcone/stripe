@@ -10,7 +10,7 @@
         <module name="java-multithreading" />
         <module name="junit" />
       </profile>
-      <profile name="Annotation profile for banking-app" enabled="true">
+      <profile name="Annotation profile for Task-Service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -18,8 +18,10 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
         <module name="banking-app" />
-        <module name="Employee-microservices" />
         <module name="Department-microservices" />
+        <module name="Task-Service" />
+        <module name="Employee-microservices" />
+        <module name="User-Service" />
       </profile>
     </annotationProcessing>
   </component>
@@ -27,6 +29,8 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Department-microservices" options="-parameters" />
       <module name="Employee-microservices" options="-parameters" />
+      <module name="Task-Service" options="-parameters" />
+      <module name="User-Service" options="-parameters" />
       <module name="banking-app" options="-parameters" />
     </option>
   </component>

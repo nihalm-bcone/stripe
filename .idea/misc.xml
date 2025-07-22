@@ -9,6 +9,8 @@
         <option value="$PROJECT_DIR$/Employee-microservices/pom.xml" />
         <option value="$PROJECT_DIR$/banking-app/pom.xml" />
         <option value="$PROJECT_DIR$/java-multithreading/pom.xml" />
+        <option value="$PROJECT_DIR$/SmartTask Manager/User-Service/pom.xml" />
+        <option value="$PROJECT_DIR$/SmartTask Manager/Task-Service/pom.xml" />
       </list>
     </option>
   </component>
